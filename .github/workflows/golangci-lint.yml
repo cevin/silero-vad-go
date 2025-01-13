@@ -16,16 +16,16 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Install ONNX
         run: |
-          apt-get update
-          apt-get install -y pkg-config wget
+          sudo apt-get update
+          sudo apt-get install -y pkg-config wget
           OV=1.20.1
           ARCH="x64"
           wget https://github.com/microsoft/onnxruntime/releases/download/v${OV}/onnxruntime-linux-${ARCH}-${OV}.tgz
           tar xf onnxruntime-linux-${ARCH}-${OV}.tgz
-          mv onnxruntime-linux-${ARCH}-${OV} /usr/local/onnxruntime
-          mkdir -p /usr/local/share/pkgconfig
-          cp /usr/local/onnxruntime/lib/pkgconfig/libonnxruntime.pc /usr/local/share/pkgconfig/
-          sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
+          sudo mv onnxruntime-linux-${ARCH}-${OV} /usr/local/onnxruntime
+          sudo mkdir -p /usr/local/share/pkgconfig
+          sudo cp /usr/local/onnxruntime/lib/pkgconfig/libonnxruntime.pc /usr/local/share/pkgconfig/
+          sudo sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: golangci-lint
