@@ -38,7 +38,7 @@ jobs:
         sudo sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
         sudo sed -i "s/\/lib64/\/lib/g" /usr/local/share/pkgconfig/libonnxruntime.pc
         sudo sed -i "s/\/include\/onnxruntime/\/include/g" /usr/local/share/pkgconfig/libonnxruntime.pc
-        sudo echo "/usr/local/onnxruntime/lib" > /etc/ld.so.conf.d/libonnxruntime.conf
+        echo "/usr/local/onnxruntime/lib" | sudo tee /etc/ld.so.conf.d/libonnxruntime.conf
         ldconfig
     - name: Execute Tests
       run: |
