@@ -46,7 +46,7 @@ mkdir -p /usr/local/share/pkgconfig
 cp /usr/local/onnxruntime/lib/pkgconfig/libonnxruntime.pc /usr/local/share/pkgconfig/
 
 sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
-sed -i "s/\/lib64/lib/g" /usr/local/share/pkgconfig/libonnxruntime.pc
+sed -i "s/\/lib64/\/lib/g" /usr/local/share/pkgconfig/libonnxruntime.pc
 sed -i "s/\/include\/onnxruntime/\/include/g" /usr/local/share/pkgconfig/libonnxruntime.pc
           
 # done
