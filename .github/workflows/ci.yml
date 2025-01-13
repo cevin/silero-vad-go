@@ -36,7 +36,7 @@ jobs:
         sudo mkdir -p /usr/local/share/pkgconfig
         sudo cp /usr/local/onnxruntime/lib/pkgconfig/libonnxruntime.pc /usr/local/share/pkgconfig/
         sudo sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
-        sudo sed -i "s/\/lib64/lib/g" /usr/local/share/pkgconfig/libonnxruntime.pc
+        sudo sed -i "s/\/lib64/\/lib/g" /usr/local/share/pkgconfig/libonnxruntime.pc
         sudo sed -i "s/\/include\/onnxruntime/\/include/g" /usr/local/share/pkgconfig/libonnxruntime.pc
         pkg-config --libs libonnxruntime
     - name: Execute Tests
