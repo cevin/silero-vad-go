@@ -48,7 +48,9 @@ cp /usr/local/onnxruntime/lib/pkgconfig/libonnxruntime.pc /usr/local/share/pkgco
 sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
 sed -i "s/\/lib64/\/lib/g" /usr/local/share/pkgconfig/libonnxruntime.pc
 sed -i "s/\/include\/onnxruntime/\/include/g" /usr/local/share/pkgconfig/libonnxruntime.pc
-          
+echo "/usr/local/onnxruntime/lib" > /etc/ld.so.conf.d/libonnxruntime.conf
+ldconfig
+
 # done
 ```
 ##### Verify

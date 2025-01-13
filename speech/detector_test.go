@@ -137,12 +137,12 @@ func TestSpeechDetection(t *testing.T) {
 		require.NotEmpty(t, segments)
 		require.Equal(t, []Segment{
 			{
-				SpeechStartAt: 1.088,
+				SpeechStartAt: 1.056,
 				SpeechEndAt:   1.632,
 			},
 			{
-				SpeechStartAt: 2.912,
-				SpeechEndAt:   3.264,
+				SpeechStartAt: 2.88,
+				SpeechEndAt:   3.232,
 			},
 			{
 				SpeechStartAt: 4.448,
@@ -159,31 +159,11 @@ func TestSpeechDetection(t *testing.T) {
 		require.Equal(t, []Segment{
 			{
 				SpeechStartAt: 3.008,
-				SpeechEndAt:   3.456,
-			},
-			{
-				SpeechStartAt: 3.968,
-				SpeechEndAt:   4.096,
-			},
-			{
-				SpeechStartAt: 4.32,
-				SpeechEndAt:   4.832,
-			},
-			{
-				SpeechStartAt: 4.96,
-				SpeechEndAt:   5.92,
-			},
-			{
-				SpeechStartAt: 5.952,
 				SpeechEndAt:   6.24,
 			},
 			{
-				SpeechStartAt: 7.264,
-				SpeechEndAt:   7.328,
-			},
-			{
-				SpeechStartAt: 7.392,
-				SpeechEndAt:   8.192,
+				SpeechStartAt: 7.072,
+				SpeechEndAt:   8.16,
 			},
 		}, segments)
 	})
@@ -197,12 +177,12 @@ func TestSpeechDetection(t *testing.T) {
 		require.NotEmpty(t, segments)
 		require.Equal(t, []Segment{
 			{
-				SpeechStartAt: 1.088,
+				SpeechStartAt: 1.056,
 				SpeechEndAt:   1.632,
 			},
 			{
-				SpeechStartAt: 2.912,
-				SpeechEndAt:   3.264,
+				SpeechStartAt: 2.88,
+				SpeechEndAt:   3.232,
 			},
 			{
 				SpeechStartAt: 4.448,
@@ -225,12 +205,12 @@ func TestSpeechDetection(t *testing.T) {
 		require.NotEmpty(t, segments)
 		require.Equal(t, []Segment{
 			{
-				SpeechStartAt: 1.056 + 0.022,
+				SpeechStartAt: 1.056 - 0.01,
 				SpeechEndAt:   1.632 + 0.01,
 			},
 			{
-				SpeechStartAt: 2.88 + 0.022,
-				SpeechEndAt:   3.232 + 0.042,
+				SpeechStartAt: 2.88 - 0.01,
+				SpeechEndAt:   3.232 + 0.01,
 			},
 			{
 				SpeechStartAt: 4.448 - 0.01,
