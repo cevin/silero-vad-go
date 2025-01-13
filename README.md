@@ -44,8 +44,11 @@ mv onnxruntime-linux-${ARCH}-${OV} /usr/local/onnxruntime
 ## Generate pc (pkg-config) file
 mkdir -p /usr/local/share/pkgconfig
 cp /usr/local/onnxruntime/lib/pkgconfig/libonnxruntime.pc /usr/local/share/pkgconfig/
-sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
 
+sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
+sed -i "s/\/lib64/lib/g" /usr/local/share/pkgconfig/libonnxruntime.pc
+sed -i "s/\/include\/onnxruntime/\/include/g" /usr/local/share/pkgconfig/libonnxruntime.pc
+          
 # done
 ```
 ##### Verify
@@ -64,6 +67,25 @@ brew install onnxruntime pkgconfig
 ```sh
 
 pkg-config --libs libonnxruntime
+```
+
+
+#### libonnxruntime.pc
+
+```text
+prefix=/usr/local/onnxruntime
+bindir=${prefix}/bin
+mandir=${prefix}/share/man
+docdir=${prefix}/share/doc/onnxruntime
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: onnxruntime
+Description: ONNX runtime
+URL: https://github.com/microsoft/onnxruntime
+Version: 1.20.1
+Libs: -L${libdir} -lonnxruntime
+Cflags: -I${includedir}
 ```
 
 ### License
