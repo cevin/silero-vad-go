@@ -22,7 +22,9 @@
 This repository is cloned from streamer45/silero-vad-go. Based on the original version, the introduction of onnxruntime dependency is modified to be through `pkg-config`, the purpose is to make it more convenient to use.
 
 #### Linux
+
 ##### Install
+
 ```sh
 
 # install pkg-config tool
@@ -51,12 +53,14 @@ sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/l
 #### Darwin (MacOS)
 
 ##### Install
+
 ```sh
 
 brew install onnxruntime pkgconfig
 ```
 
 ##### Verify
+
 ```sh
 
 pkg-config --libs libonnxruntime
