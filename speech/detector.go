@@ -1,7 +1,7 @@
 package speech
 
 // #cgo CFLAGS: -Wall -Werror -std=c99
-// #cgo LDFLAGS: -lonnxruntime
+// #cgo pkg-config: libonnxruntime
 // #include "ort_bridge.h"
 import "C"
 
@@ -210,7 +210,7 @@ func (sd *Detector) Detect(pcm []float32) ([]Segment, error) {
 
 		if speechProb >= sd.cfg.Threshold && !sd.triggered {
 			sd.triggered = true
-			speechStartAt := (float64(sd.currSample-windowSize-speechPadSamples) / float64(sd.cfg.SampleRate))
+			speechStartAt := float64(sd.currSample-windowSize-speechPadSamples) / float64(sd.cfg.SampleRate)
 
 			// We clamp at zero since due to padding the starting position could be negative.
 			if speechStartAt < 0 {
@@ -233,7 +233,7 @@ func (sd *Detector) Detect(pcm []float32) ([]Segment, error) {
 				continue
 			}
 
-			speechEndAt := (float64(sd.tempEnd+speechPadSamples) / float64(sd.cfg.SampleRate))
+			speechEndAt := float64(sd.tempEnd+speechPadSamples) / float64(sd.cfg.SampleRate)
 			sd.tempEnd = 0
 			sd.triggered = false
 			slog.Debug("speech end", slog.Float64("endAt", speechEndAt))

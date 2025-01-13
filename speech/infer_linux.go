@@ -3,7 +3,7 @@
 package speech
 
 // #cgo CFLAGS: -Wall -Werror -std=c99
-// #cgo LDFLAGS: -lonnxruntime
+// #cgo pkg-config: libonnxruntime
 // #include "ort_bridge.h"
 import "C"
 

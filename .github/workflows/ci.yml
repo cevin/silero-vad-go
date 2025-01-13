@@ -26,11 +26,16 @@ jobs:
         path: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
     - name: Install ONNX
       run: |
-        wget https://github.com/microsoft/onnxruntime/releases/download/v1.16.2/onnxruntime-linux-x64-1.16.2.tgz
-        tar xf onnxruntime-linux-x64-1.16.2.tgz
-        sudo cp ./onnxruntime-linux-x64-1.16.2/include/* /usr/local/include
-        sudo cp ./onnxruntime-linux-x64-1.16.2/lib/* /usr/local/lib
-        sudo ldconfig
+        apt-get update
+        apt-get install -y pkg-config wget
+        OV=1.20.1
+        ARCH="x64"
+        wget https://github.com/microsoft/onnxruntime/releases/download/v${OV}/onnxruntime-linux-${ARCH}-${OV}.tgz  
+        tar xf onnxruntime-linux-${ARCH}-${OV}.tgz
+        mv onnxruntime-linux-${ARCH}-${OV} /usr/local/onnxruntime  
+        mkdir -p /usr/local/share/pkgconfig
+        cp /usr/local/onnxruntime/lib/pkgconfig/libonnxruntime.pc /usr/local/share/pkgconfig/
+        sed -i "s/\/usr\/local/\/usr\/local\/onnxruntime/g" /usr/local/share/pkgconfig/libonnxruntime.pc
     - name: Execute Tests
       run: |
         go mod download
