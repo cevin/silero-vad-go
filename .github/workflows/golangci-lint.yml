@@ -29,7 +29,7 @@ jobs:
           sudo sed -i "s/\/lib64/\/lib/g" /usr/local/share/pkgconfig/libonnxruntime.pc
           sudo sed -i "s/\/include\/onnxruntime/\/include/g" /usr/local/share/pkgconfig/libonnxruntime.pc
           echo "/usr/local/onnxruntime/lib" | sudo tee /etc/ld.so.conf.d/libonnxruntime.conf
-          ldconfig
+          sudo ldconfig
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: golangci-lint
